@@ -2,7 +2,7 @@
 # Файл обязан лежать в каталоге .github/workflows/ репозитория.
 name: CI
 # Событие-триггер: любой push в любую ветку, pull request в main и ручной
-запуск.
+#запуск.
 on:
 push:
 pull_request:

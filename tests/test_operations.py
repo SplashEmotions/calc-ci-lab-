@@ -2,7 +2,7 @@
 
 import pytest
 
-from calc import add, divide, multiply, power, subtract
+from calc import add, divide, multiply, power, subtract, factorial
 from calc.cli import main
 
 
@@ -42,6 +42,21 @@ def test_power(base, exponent, expected):
 def test_power_rejects_non_integer_exponent():
     with pytest.raises(TypeError):
         power(2, 0.5)
+
+
+@pytest.mark.parametrize(
+    "n, expected",
+    [(0, 1), (1, 1), (5, 120), (6, 720)],
+)
+def test_factorial(n, expected):
+    assert factorial(n) == expected
+
+
+def test_factorial_invalid_input_raises():
+    with pytest.raises(ValueError):
+        factorial(-1)
+    with pytest.raises(ValueError):
+        factorial(3.5)
 
 
 def test_cli_add(capsys):
